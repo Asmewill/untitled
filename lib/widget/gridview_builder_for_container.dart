@@ -32,6 +32,7 @@ class GridViewBuilderForContainer extends StatelessWidget{
   Widget build(BuildContext context) {
     return GridView.builder(
         itemCount: listData.length,
+        shrinkWrap: true,///Container跟随GridView内容变化高度, shrinkWrap:true;
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,

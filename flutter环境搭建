@@ -1,0 +1,22 @@
+1.Flutter中文网环境搭建教程：https://flutterchina.club/setup-windows/#%E4%BD%BF%E7%94%A8%E9%95%9C%E5%83%8F
+
+2.环境变量配置：https://www.jianshu.com/p/ec829849c071
+
+3.flutter doctor 报错原因分析：
+https://blog.csdn.net/tangxw1991/article/details/79773191
+
+4.安装Flutter和Dart插件：https://www.jianshu.com/p/c552fca89f19
+
+5.如果是VsCode
+【
+1.Flutter         //Flutter插件
+2.Dart            //Dart语言
+3.Code Runner     //右键的时候,会显示Run Code  可以运行void main()函数
+4.Awesome Flutter Snippets   //flutter提示
+5.中文语言汉化包
+】
+
+6.安装成功,如图：flutter_success.png
+
+7.flutter 内置图标库：https://flutter.github.io/cupertino_icons/
+

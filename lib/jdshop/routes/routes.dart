@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/jdshop/pages/tabs.dart';
 import 'package:untitled/widget/pages/form_page.dart';
 import 'package:untitled/widget/pages/login_page.dart';
 import 'package:untitled/widget/pages/product_info_page.dart';
@@ -15,19 +16,8 @@ import 'package:untitled/widget/statefulwidget/tabcontroller_appbar_tabbar_tabba
 
 ///配置路由,定义Map类型的routes,Key为String类型，Value为Function类型
 final Map<String ,Function>  routes={
-  '/':(context)=>ScaffoldBottomNavigationBar1(),
-  '/form':(context)=>FormPage(),
-  '/search':(context,{dynamic arguments})=>SearchPage(arguments:arguments),//dynamic可以去掉，默认是这种类型
-  '/product':(context)=>ProductPage(),
-  '/product_info':(context,{arguments})=>ProductInfoPage(arguments:arguments),
-  '/login':(context)=>LoginPage(),
-  '/register_first':(context)=>RegisterFirstPage(),
-  '/register_second':(context)=>RegisterSecondPage(),
-  '/register_thrid':(context)=>RegisterThridPage(),
-  '/default_tabcontrol_appbar_tabbar_tabbarview':(context)=>DefaultTabControllerAppBarTabBarTabBarView(),
-  '/tabcontrol_appbar_tabbar_tabbarview':(context)=>TabControllerAppBarTabBarTabBarView(),
-  '/drawer_drawer_header':(context)=>DrawerDrawerHeader(),
-  '/drawer_useraccounts_drawer_header':(context)=>DrawerUserAccountsDrawerHeader()
+  '/':(context)=>Tabs(),
+
 };
 
 ///固定写法

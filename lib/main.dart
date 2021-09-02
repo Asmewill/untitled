@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/jdshop/routes/routes.dart';
 import 'package:untitled/widget/aspectratio_to_container.dart';
 import 'package:untitled/widget/aspectratio_to_parent.dart';
 import 'package:untitled/widget/card_column_aspectratio_listtile.dart';
@@ -20,7 +22,7 @@ import 'package:untitled/widget/listview_map_listtile.dart';
 import 'package:untitled/widget/listview_padding_image_container.dart';
 import 'package:untitled/widget/pages/form_page.dart';
 import 'package:untitled/widget/pages/search_page.dart';
-import 'package:untitled/widget/routes/routes.dart';
+
 import 'package:untitled/widget/row_expanded_1.dart';
 import 'package:untitled/widget/row_expanded_2.dart';
 import 'package:untitled/widget/row_mainaxis_crossaxis_alignment.dart';
@@ -40,20 +42,24 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: true,
-      title: "FirstFlutter",
-      ///默认不配置抽取路由
-      // home: ScaffoldBottomNavigationBar1(),
-      // routes: {
-      //   '/search':(context)=>SearchPage(),
-      //   '/form':(context)=>FormPage(),
-      // },
-      ///抽取路由配置之后
-      initialRoute: '/',
-      onGenerateRoute:onGenerateRoute,
-      theme: ThemeData(primarySwatch: Colors.blue),
-    );
+    return ScreenUtilInit(
+        //designSize: Size(750, 1334),
+        builder: (){
+      return MaterialApp(
+        debugShowCheckedModeBanner: true,
+        title: "FirstFlutter",
+        ///默认不配置抽取路由
+        // home: ScaffoldBottomNavigationBar1(),
+        // routes: {
+        //   '/search':(context)=>SearchPage(),
+        //   '/form':(context)=>FormPage(),
+        // },
+        ///抽取路由配置之后
+        initialRoute: '/',
+        onGenerateRoute:onGenerateRoute,
+        theme: ThemeData(primaryColor: Colors.white),
+      );
+    });
   }
 }
 //

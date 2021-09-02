@@ -24,6 +24,7 @@ class GridViewCountMapContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      shrinkWrap: true,///Container跟随GridView内容变化高度, shrinkWrap:true;
       crossAxisCount: 2,//一行显示的Widget的个数
       childAspectRatio: 0.95,//宽高比,不设置默认是1
       children: _getListData(),

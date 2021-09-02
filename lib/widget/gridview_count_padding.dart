@@ -9,6 +9,7 @@ class GridViewCountPadding extends StatelessWidget{
      return Padding(
        padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
        child: GridView.count(
+         shrinkWrap: true,///Container跟随GridView内容变化高度, shrinkWrap:true;
          crossAxisCount: 2,//一行Widget的数量
          childAspectRatio: 1.7, //宽高比
          // mainAxisSpacing: 10,

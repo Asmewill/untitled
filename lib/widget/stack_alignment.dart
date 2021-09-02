@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class StackAlignment extends StatelessWidget{

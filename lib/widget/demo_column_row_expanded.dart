@@ -16,7 +16,7 @@ class DemoColumnRowExpanded extends StatelessWidget{
                   color: Colors.green,
                   alignment: Alignment.center,
                   child: Text(
-                    "你好，flutter",style: TextStyle(color: Colors.white,),
+                    "你好，flutter",style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
