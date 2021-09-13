@@ -7,6 +7,7 @@ import 'package:untitled/jdshop/configs/config.dart';
 import 'package:untitled/jdshop/model/left_model.dart';
 import 'package:untitled/jdshop/model/right_model.dart';
 import 'package:untitled/jdshop/pages/product_list_page.dart';
+import 'package:untitled/jdshop/pages/search_page.dart';
 import 'package:untitled/widget/stack_align.dart';
 import 'package:untitled/widget/stack_test_demo.dart';
 import 'package:untitled/widget/statefulwidget/index_stack_demo.dart';
@@ -57,8 +58,46 @@ class _CategoryState extends State<CategoryPage>
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [_leftContent(), _rightGridViewBuildContent()],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.center_focus_weak),
+          onPressed: () {},
+        ),
+        title: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return SearchPage();
+            }));
+          },
+          child: Container(
+            padding: EdgeInsets.only(left: 10),
+            height: 40,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(23), color: Colors.black12),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.search,
+                  size: 18,
+                  color: Colors.black26,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 2, bottom: 2),
+                  child: Text("笔记本",
+                      style: TextStyle(fontSize: 16, color: Colors.black26)),
+                )
+              ],
+            ),
+          ),
+        ),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.message))],
+      ),
+      body: Row(
+        children: [_leftContent(), _rightGridViewBuildContent()],
+      ),
     );
   }
 
@@ -89,13 +128,13 @@ class _CategoryState extends State<CategoryPage>
                                         ? Colors.red
                                         : Colors.black)),
                             decoration: BoxDecoration(
-                                color: _currentIndex == index
-                                    ? Colors.black12
-                                    : Colors.white,
-                                // border: Border(
-                                //     bottom: BorderSide(
-                                //         color: Colors.grey, width: 0.2)
-                                // )
+                              color: _currentIndex == index
+                                  ? Colors.black12
+                                  : Colors.white,
+                              // border: Border(
+                              //     bottom: BorderSide(
+                              //         color: Colors.grey, width: 0.2)
+                              // )
                             ),
                           ),
                           Divider(height: 1)
@@ -155,8 +194,9 @@ class _CategoryState extends State<CategoryPage>
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                         //return StackTestDemo();
-                          return ProductListPage(arguments: {"cid": _rightList[index].id});
+                        //return StackTestDemo();
+                        return ProductListPage(
+                            arguments: {"cid": _rightList[index].id});
                       }));
                     },
                     child: Column(

@@ -7,6 +7,8 @@ import 'package:untitled/jdshop/configs/config.dart';
 import 'package:untitled/jdshop/model/banner_model.dart';
 import 'package:untitled/jdshop/model/hot_product_model.dart';
 import 'package:untitled/jdshop/model/you_like_model.dart';
+import 'package:untitled/jdshop/pages/product_detail_page.dart';
+import 'package:untitled/jdshop/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,8 +38,9 @@ class _HomePageState extends State<HomePage>
 
   void _getHotProduct() async {
     var api = Config.domain + "api/plist?is_best=1";
+    print("api:${api}");
     var result = await Dio().get(api);
-    print("hotResult:${result}");
+    print("返回结果:${result}");
     var hotProductModel = HotProductModel.fromJson(result.data);
     setState(() {
       _hotProductList = hotProductModel.result;
@@ -47,8 +50,9 @@ class _HomePageState extends State<HomePage>
   //请求轮播图数据
   void _getBannerData() async {
     var api = Config.domain + "api/focus";
+    print("api:${api}");
     var result = await Dio().get(api);
-    print("bannerResult:${result}");
+    print("返回结果:${result}");
     var bannerModel = BannerModel.fromJson(result.data);
     //print("result.data:${result.data}");
     setState(() {
@@ -58,8 +62,9 @@ class _HomePageState extends State<HomePage>
 
   void _getGuessYouLike() async {
     var api = Config.domain + "api/plist?is_hot=1";
+    print("api:${api}");
     var result = await Dio().get(api);
-    print("YouLikeResult:${result}");
+    print("返回结果:${result}");
     var youlikeMode = YouLikeModel.fromJson(result.data);
     setState(() {
       this._youlikeList = youlikeMode.result;
@@ -68,12 +73,50 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        _swiperWidget(),
-        _guessYouLikeWidget(),
-        _hotWidget(),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.center_focus_weak),
+          onPressed: () {},
+        ),
+        title: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return SearchPage();
+            }));
+          },
+          child: Container(
+            padding: EdgeInsets.only(left: 10),
+            height: 40,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(23), color: Colors.black12),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.search,
+                  size: 18,
+                  color: Colors.black26,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 2, bottom: 2),
+                  child: Text("笔记本",
+                      style: TextStyle(fontSize: 16, color: Colors.black26)),
+                )
+              ],
+            ),
+          ),
+        ),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.message))],
+      ),
+      body: ListView(
+        children: [
+          _swiperWidget(),
+          _guessYouLikeWidget(),
+          _hotWidget(),
+        ],
+      ),
     );
   }
 
@@ -132,27 +175,36 @@ class _HomePageState extends State<HomePage>
                   //图片去除\\转换
                   var pic = Config.domain + _youlikeList[index].pic!;
                   var picUrl = pic.replaceAll("\\", "/");
-                  return Column(
-                    children: [
-                      Container(
-                        width: 85,
-                        height: 85,
-                        margin: EdgeInsets.only(right: 10), //距离右边的边距
-                        child: AspectRatio(
-                            aspectRatio: 1.0 / 1.0,
-                            child: Image.network(picUrl, fit: BoxFit.cover)),
-                      ),
-                      Container(
-                        width: 85,
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text(
-                          _youlikeList[index].title,
-                          style: TextStyle(fontSize: 12),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ProductDetailPage(id: _youlikeList[index].id);
+                      }));
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 85,
+                          height: 85,
+                          margin: EdgeInsets.only(right: 10), //距离右边的边距
+                          child: AspectRatio(
+                              aspectRatio: 1.0 / 1.0,
+                              child: Image.network(picUrl, fit: BoxFit.cover)),
                         ),
-                      )
-                    ],
+                        Container(
+                          width: 85,
+                          padding: EdgeInsets.only(top: 5),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "￥${_youlikeList[index].price}",
+                            style: TextStyle(fontSize: 12, color: Colors.red),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 }),
           )
@@ -180,58 +232,67 @@ class _HomePageState extends State<HomePage>
           Container(
               margin: EdgeInsets.only(left: 15, top: 5, right: 15, bottom: 5),
               child: Wrap(
-                runSpacing: 10.0,
-                spacing: 10,
+                runSpacing: 10.0, //竖直间距
+                spacing: 10, //水平间距
                 children: _hotProductList.map((item) {
                   var pic = Config.domain + "${item.pic}";
                   var picUrl = pic.replaceAll("\\", "/");
-                  return Container(
-                      width: (ScreenUtil().screenWidth - 40) / 2,
-                      padding: EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.black12)),
-                      child: Column(
-                        children: [
-                          Container(
-                            child: AspectRatio(
-                              aspectRatio: 1.0 / 1.0,
-                              child: Image.network(picUrl, fit: BoxFit.cover),
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ProductDetailPage(id: item.id);
+                      }));
+                    },
+                    child: Container(
+                        width: (ScreenUtil().screenWidth - 40) / 2,
+                        padding: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 1, color: Colors.black12)),
+                        child: Column(
+                          children: [
+                            Container(
+                              child: AspectRatio(
+                                aspectRatio: 1.0 / 1.0,
+                                child: Image.network(picUrl, fit: BoxFit.cover),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 5),
-                            child: Text("￥${item.title}",
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey)),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 5),
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    "￥${item.price}",
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.red),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text("￥${item.oldPrice}",
+                            Padding(
+                              padding: EdgeInsets.only(top: 5),
+                              child: Text("￥${item.title}",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.grey)),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 5),
+                              child: Stack(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "￥${item.price}",
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.grey,
-                                          decoration:
-                                              TextDecoration.lineThrough)),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ));
+                                          fontSize: 14, color: Colors.red),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text("￥${item.oldPrice}",
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey,
+                                            decoration:
+                                                TextDecoration.lineThrough)),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        )),
+                  );
                 }).toList(),
               ))
         ],

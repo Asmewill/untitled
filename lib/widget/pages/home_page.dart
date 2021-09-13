@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/widget/button_demo.dart';
+import 'package:untitled/widget/pages/provider_demo_page.dart';
 import 'package:untitled/widget/pages/search_page.dart';
 import 'package:untitled/widget/statefulwidget/checkbox_demo.dart';
 import 'package:untitled/widget/statefulwidget/drawer_drawer_header.dart';
@@ -114,6 +115,14 @@ class _HomePageState extends State<HomePage> {
               }));
             },
             child: Text("文本输入框演示页面二")
+        ),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                return ProviderDemoPage();
+              }));
+            },
+            child: Text("Provider功能演示")
         ),
       ],
     );

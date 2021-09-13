@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/jdshop/routes/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled/jdshop/provider/cart_provider.dart';
 import 'package:untitled/widget/aspectratio_to_container.dart';
 import 'package:untitled/widget/aspectratio_to_parent.dart';
 import 'package:untitled/widget/card_column_aspectratio_listtile.dart';
@@ -22,6 +23,8 @@ import 'package:untitled/widget/listview_map_listtile.dart';
 import 'package:untitled/widget/listview_padding_image_container.dart';
 import 'package:untitled/widget/pages/form_page.dart';
 import 'package:untitled/widget/pages/search_page.dart';
+import 'package:untitled/widget/provider/count_provider.dart';
+
 
 import 'package:untitled/widget/row_expanded_1.dart';
 import 'package:untitled/widget/row_expanded_2.dart';
@@ -37,6 +40,12 @@ import 'package:untitled/widget/statefulwidget/scaffold_bottom_navigation_bar_1.
 import 'package:untitled/widget/wrap_elevated_button_1.dart';
 import 'package:untitled/widget/wrap_elevated_button_2.dart';
 
+import 'jdshop/routes/routes.dart';
+
+
+
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -44,20 +53,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         //designSize: Size(750, 1334),
-        builder: (){
-      return MaterialApp(
-        debugShowCheckedModeBanner: true,
-        title: "FirstFlutter",
-        ///默认不配置抽取路由
-        // home: ScaffoldBottomNavigationBar1(),
-        // routes: {
-        //   '/search':(context)=>SearchPage(),
-        //   '/form':(context)=>FormPage(),
-        // },
-        ///抽取路由配置之后
-        initialRoute: '/',
-        onGenerateRoute:onGenerateRoute,
-        theme: ThemeData(primaryColor: Colors.white),
+        builder: () {
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CountProvider()),
+          ChangeNotifierProvider(create: (context) => CartProvider())
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: true,
+          title: "FirstFlutter",
+
+          ///默认不配置抽取路由
+          // home: ScaffoldBottomNavigationBar1(),
+          // routes: {
+          //   '/search':(context)=>SearchPage(),
+          //   '/form':(context)=>FormPage(),
+          // },
+          ///抽取路由配置之后
+          initialRoute: '/',
+          onGenerateRoute: onGenerateRoute,
+          theme: ThemeData(primaryColor: Colors.white),
+        ),
       );
     });
   }

@@ -17,6 +17,7 @@ import 'package:untitled/widget/statefulwidget/tabcontroller_appbar_tabbar_tabba
 ///配置路由,定义Map类型的routes,Key为String类型，Value为Function类型
 final Map<String ,Function>  routes={
   '/':(context)=>Tabs(),
+  '/index_demo':(context)=>ScaffoldBottomNavigationBar1(),
 
 };
 

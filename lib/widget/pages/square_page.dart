@@ -23,7 +23,7 @@ class _SquarePageState extends State<SquarePage> {
                       indicatorSize: TabBarIndicatorSize.label,
                       indicatorColor: Colors.red,
                       labelColor: Colors.red,
-                      unselectedLabelColor: Colors.white,
+                      unselectedLabelColor: Colors.black,
                       isScrollable: true,
                         tabs: [
                           Tab(child: Text("热销")),

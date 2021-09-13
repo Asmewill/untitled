@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/jdshop/configs/config.dart';
 import 'package:untitled/jdshop/model/product_list_model.dart';
+import 'package:untitled/jdshop/pages/product_detail_page.dart';
 import 'package:untitled/jdshop/widget/LoadingWidget.dart';
 
 class ProductListPage extends StatefulWidget {
@@ -56,7 +57,9 @@ class _ProductListPageState extends State<ProductListPage> {
     super.initState();
     this._cid=widget.arguments["cid"];
     this._keywords=widget.arguments['keyword'];
-    _searchController.text=this._keywords;//设置初始值
+    if(this._keywords!=null){
+      _searchController.text=this._keywords;//设置初始值
+    }
     _getProductListData();
     _scrollController.addListener(() {
       //_scrollController.position.pixels //获取滚动条滚动的高度
@@ -201,86 +204,94 @@ class _ProductListPageState extends State<ProductListPage> {
           itemBuilder: (context, index) {
             var pic =
                 (Config.domain + _productList[index].pic).replaceAll("\\", "/");
-            return Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      width: 120,
-                      height: 120,
-                      alignment: Alignment.topCenter,
-                      child: AspectRatio(
-                        aspectRatio: 1 / 1,
-                        child: Image.network("${pic}", fit: BoxFit.cover),
+            return InkWell(
+              onTap: (){
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return ProductDetailPage(id:_productList[index].id);
+                }));
+              },
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        width: 120,
+                        height: 120,
+                        alignment: Alignment.topCenter,
+                        child: AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: Image.network("${pic}", fit: BoxFit.cover),
+                        ),
+                        //  decoration: BoxDecoration(color: Colors.red),
                       ),
-                      //  decoration: BoxDecoration(color: Colors.red),
-                    ),
-                    Expanded(
-                        flex: 1,
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 5, top: 10, right: 5, bottom: 10),
-                          height: 120,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text("${_productList[index].title}",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(color: Colors.black)),
-                              ),
-                              // SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 8, right: 8),
-                                    height: 22,
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "8G",
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(11),
-                                        color: Colors.black12),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Container(
-                                    padding: EdgeInsets.only(left: 8, right: 8),
-                                    height: 22,
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "16G",
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(11),
-                                        color: Colors.black12),
-                                  ),
-                                ],
-                              ),
-                              //SizedBox(height: 15),
-                              Container(
-                                alignment: Alignment.bottomLeft,
-                                //height: double.infinity,
-                                child: Text(
-                                  "￥${_productList[index].price}",
-                                  style: TextStyle(color: Colors.red),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 5, top: 10, right: 5, bottom: 10),
+                            height: 120,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text("${_productList[index].title}",
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(color: Colors.black)),
                                 ),
-                                //decoration: BoxDecoration(color: Colors.red),
-                              )
-                            ],
-                          ),
-                          //decoration: BoxDecoration(color: Colors.red),
-                        ))
-                  ],
-                ),
-                Divider(height: 1),
-                _showMore(index)
-              ],
+                                // SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(left: 8, right: 8),
+                                      height: 22,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "8G",
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(11),
+                                          color: Colors.black12),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 8, right: 8),
+                                      height: 22,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "16G",
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(11),
+                                          color: Colors.black12),
+                                    ),
+                                  ],
+                                ),
+                                //SizedBox(height: 15),
+                                Container(
+                                  alignment: Alignment.bottomLeft,
+                                  //height: double.infinity,
+                                  child: Text(
+                                    "￥${_productList[index].price}",
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                  //decoration: BoxDecoration(color: Colors.red),
+                                )
+                              ],
+                            ),
+                            //decoration: BoxDecoration(color: Colors.red),
+                          ))
+                    ],
+                  ),
+                  Divider(height: 1),
+                  _showMore(index)
+                ],
+              ),
             );
           },
         ),
