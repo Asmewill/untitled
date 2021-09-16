@@ -4,9 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/jdshop/model/ProductModel.dart';
 import 'package:untitled/jdshop/model/product_detail_model.dart';
+import 'package:untitled/jdshop/pages/checkout_page.dart';
+import 'package:untitled/jdshop/pages/login_page.dart';
 import 'package:untitled/jdshop/pages/product_detail_page.dart';
 import 'package:untitled/jdshop/provider/cart_provider.dart';
+import 'package:untitled/jdshop/provider/checkout_provider.dart';
+import 'package:untitled/jdshop/utils/ToastUtil.dart';
+import 'package:untitled/jdshop/utils/cart_util.dart';
 import 'package:untitled/jdshop/utils/image_util.dart';
+import 'package:untitled/jdshop/utils/user_util.dart';
 import 'package:untitled/jdshop/widget/cart_num.dart';
 import 'package:untitled/jdshop/widget/cart_num_2.dart';
 import 'package:untitled/widget/pages/product_info_page.dart';
@@ -21,6 +27,7 @@ class CartPage extends StatefulWidget {
 class _CarPageState extends State<CartPage> {
   late CartProvider cartProvider;
   bool isEdit = false;
+  late CheckoutProvider checkoutProvider;
 
   @override
   void initState() {
@@ -30,6 +37,7 @@ class _CarPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    checkoutProvider = Provider.of(context);
     print("CartPage---build");
     cartProvider = Provider.of(context);
     return Scaffold(
@@ -184,7 +192,7 @@ class _CarPageState extends State<CartPage> {
                               margin: EdgeInsets.only(right: 10),
                               child: ElevatedButton(
                                 child: Text("结算"),
-                                onPressed: () {},
+                                onPressed: doCheckOut,
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all(Colors.red)),
@@ -215,6 +223,26 @@ class _CarPageState extends State<CartPage> {
       return Center(
         child: Text("购物车空空如也..."),
       );
+    }
+  }
+
+  doCheckOut() async {
+    List checkList = await CartUtil.getCheckOutData();
+    bool isLogin = await UserUtil.getUserLoginState();
+    if (checkList.length <= 0) {
+      ToastUtil.showMsg("购物车中没有选中的数据");
+    } else {
+      checkoutProvider.setCheckoutList(checkList);
+      if (isLogin) {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return CheckOutPage();
+        }));
+      } else {
+        ToastUtil.showMsg("您还没有登录，请登录以后再去结算");
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return LoginPage();
+        }));
+      }
     }
   }
 }

@@ -113,16 +113,20 @@ class _LoginPageState extends State<LoginPage> {
     }
     var api = "${Config.domain}api/doLogin";
     print("api:${api}");
-    var result =await
-        Dio().post(api, data: {'usernamed': userName, 'password': pwd});
-    print("返回结果:${result}");
-    if(result.data['success']==true){
-      //{"success":true,"message":"登录成功","userinfo":[{"_id":"60fcffbaa14f15029469d153","username":null,"tel":null,"salt":"774412967f19ea61d448977ad9749078"}]}
-      SharedPreferencesUtils.setString(Config.USER_INFO, json.encode(result.data['userinfo']));//将结合转换成String
-      eventBus.fire(UserEvent(text:"登录成功"));
-      Navigator.pop(context);
-    }else{
-      ToastUtil.showMsg(result.data['message']);
+    try{
+      var result =await
+      Dio().post(api, data: {'username': userName, 'password': pwd});
+      print("返回结果:${result}");
+      if(result.data['success']==true){
+        //{"success":true,"message":"登录成功","userinfo":[{"_id":"60fcffbaa14f15029469d153","username":null,"tel":null,"salt":"774412967f19ea61d448977ad9749078"}]}
+        SharedPreferencesUtils.setString(Config.USER_INFO, json.encode(result.data['userinfo']));//将结合转换成String
+        eventBus.fire(UserEvent(text:"登录成功"));
+        Navigator.pop(context);
+      }else{
+        ToastUtil.showMsg(result.data['message']);
+      }
+    }catch(e){
+      print(e.toString());
     }
   }
 }

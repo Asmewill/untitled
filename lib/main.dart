@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled/jdshop/provider/cart_provider.dart';
+import 'package:untitled/jdshop/provider/checkout_provider.dart';
 import 'package:untitled/widget/aspectratio_to_container.dart';
 import 'package:untitled/widget/aspectratio_to_parent.dart';
 import 'package:untitled/widget/card_column_aspectratio_listtile.dart';
@@ -26,6 +27,7 @@ import 'package:untitled/widget/pages/search_page.dart';
 import 'package:untitled/widget/provider/count_provider.dart';
 
 
+
 import 'package:untitled/widget/row_expanded_1.dart';
 import 'package:untitled/widget/row_expanded_2.dart';
 import 'package:untitled/widget/row_mainaxis_crossaxis_alignment.dart';
@@ -46,6 +48,8 @@ import 'jdshop/routes/routes.dart';
 
 
 
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -57,7 +61,8 @@ class MyApp extends StatelessWidget {
       return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => CountProvider()),
-          ChangeNotifierProvider(create: (context) => CartProvider())
+          ChangeNotifierProvider(create: (context) => CartProvider()),
+          ChangeNotifierProvider(create: (context) => CheckoutProvider())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: true,

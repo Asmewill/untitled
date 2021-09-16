@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage>
     var result = await Dio().get(api);
     print("返回结果:${result}");
     var hotProductModel = HotProductModel.fromJson(result.data);
+    print(result.data is Map);
     setState(() {
       _hotProductList = hotProductModel.result;
     });

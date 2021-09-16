@@ -239,8 +239,6 @@ class _SearchPageState extends State<SearchPage> {
           );
         }
     );
-
      print("dialogResult:${result}");
-
   }
 }

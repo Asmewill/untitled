@@ -13,3 +13,15 @@ class UserEvent {
   String text;
   UserEvent({this.text = ""});
 }
+
+class AddressEvent {
+  String text;
+  AddressEvent({this.text = ""});
+}
+
+
+class CheckoutEvent {
+  String text;
+  CheckoutEvent({this.text = ""});
+}
+

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/jdshop/event/event_bus.dart';
 import 'package:untitled/jdshop/pages/login_page.dart';
+import 'package:untitled/jdshop/pages/order_page.dart';
 import 'package:untitled/jdshop/utils/ToastUtil.dart';
 import 'package:untitled/jdshop/utils/user_util.dart';
 import 'package:untitled/jdshop/widget/jd_button.dart';
@@ -85,7 +86,8 @@ class _MinePageState extends State<MinePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("用户名：${userInfo[0]['username']==null?"Owen":userInfo[0]['username']}",
+                          Text(
+                              "用户名：${userInfo[0]['username'] == null ? "Owen" : userInfo[0]['username']}",
                               style: TextStyle(color: Colors.white)),
                           SizedBox(height: 10),
                           Text("普通会员", style: TextStyle(color: Colors.white))
@@ -122,7 +124,10 @@ class _MinePageState extends State<MinePage> {
                     ),
                   ),
                   onTap: () {
-                    ToastUtil.showMsg("全部订单");
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return OrderPage();
+                    }));
                   },
                 ),
                 Divider(height: 0.5, color: Colors.black26),

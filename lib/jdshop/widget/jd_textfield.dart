@@ -5,10 +5,12 @@ class JdTextField extends StatelessWidget {
   final String text;
   final bool password;
   var onChanged;
+  var controller;
 
   JdTextField(
       {Key? key,
       this.text = "输入内容",
+      this.controller,
       this.password = false,
       this.onChanged })
       : super(key: key);
@@ -18,6 +20,7 @@ class JdTextField extends StatelessWidget {
     return Container(
       child: TextField(
      //   textAlign: TextAlign.end,
+        controller: controller,
         textAlignVertical: TextAlignVertical.bottom,
         maxLines: 1,
         obscureText: this.password,
