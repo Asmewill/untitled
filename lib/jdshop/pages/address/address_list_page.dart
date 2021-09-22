@@ -192,8 +192,8 @@ class _AddressListState extends State<AddressListPage> {
     );
   }
   
-  showDelDialog(addressId){
-    var result=  showDialog(
+  showDelDialog(addressId)async{
+    var result=await   showDialog(//必须加await才可以获取返回值
         barrierDismissible:false,   //表示点击灰色背景的时候是否消失弹出框
         context:context,
         builder: (context){
@@ -218,7 +218,7 @@ class _AddressListState extends State<AddressListPage> {
           );
         }
     );
-    print("dialogResult:${result}");
+    print("dialogResult:${result}");//必须加await才可以获取返回值
   }
 
   _delAddress(addressId) async{

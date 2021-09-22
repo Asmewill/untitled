@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/widget/button_demo.dart';
+import 'package:untitled/widget/button_checkbox_radio/button_demo.dart';
 import 'package:untitled/widget/pages/provider_demo_page.dart';
 import 'package:untitled/widget/pages/search_page.dart';
 import 'package:untitled/widget/statefulwidget/checkbox_demo.dart';
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return  ListView(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(15),
       children: [
         ElevatedButton(
             onPressed: () {
@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("普通路由跳转传值:跳转到搜索界面")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
               ///命名路由跳转
@@ -42,7 +41,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("命名路由跳转传值:跳转到搜索界面")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
               ///命名路由跳转
@@ -50,7 +48,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("命名路由跳转:跳转到商品页面")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
               ///命名路由跳转
@@ -58,7 +55,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("DefaultTabControllerAppBarTabBarTabBarView")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
               ///命名路由跳转
@@ -66,7 +62,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("TabControllerAppBarTabBarTabBarView")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context){
@@ -75,7 +70,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("DrawerDrawerHeader")
         ),
-        SizedBox(height: 20),
         ElevatedButton(
             onPressed: () {
              Navigator.of(context).push(MaterialPageRoute(builder: (context){

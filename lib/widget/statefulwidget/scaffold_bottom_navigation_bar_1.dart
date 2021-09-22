@@ -31,6 +31,27 @@ class _ScaffoldBottomNavigationBarState extends State<ScaffoldBottomNavigationBa
       appBar: AppBar(
         title: Text("Flutter Demo"),
       ),
+      floatingActionButton: Container(
+        height: 80,
+        width: 80,
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.only(top: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: Colors.white,
+        ),
+
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+            setState(() {  //改变状态
+              this._currentIndex=0;
+            });
+          },
+          backgroundColor: this._currentIndex==0?Colors.red:Colors.yellow,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body:listPage[this._currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: this._currentIndex,

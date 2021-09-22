@@ -143,6 +143,7 @@ class _ProductListPageState extends State<ProductListPage> {
     setState(() {
       this.flag = false;
     });
+
     var api ;
         //'${Config.domain}api/plist?cid=${widget.arguments["cid"]}&page=${this._page}&sort=${this._sort}&pageSize=${this._pageSize}';
     if(this._keywords==null){
@@ -151,9 +152,9 @@ class _ProductListPageState extends State<ProductListPage> {
       api ='${Config.domain}api/plist?search=${this._keywords}&page=${this._page}&sort=${this._sort}&pageSize=${this._pageSize}';
     }
 
-    print('Url:${api}');
+    print('Api:${api}');
     var result = await new Dio().get(api);
-    print('productList:${result.data}');
+    print('返回结果:${result.data}');
     var productList = ProductListModel.fromJson(result.data);
     // setState(() {
     //   this._productList = productList.result;
