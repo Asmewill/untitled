@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/jdshop/widget/LoadingWidget.dart';
+import 'package:untitled/widget/refresh/news_detail_1.dart';
+import 'package:untitled/widget/refresh/news_detail_2.dart';
 
 class RefreshDemo extends StatefulWidget {
   const RefreshDemo({Key? key}) : super(key: key);
@@ -48,9 +50,11 @@ class _RefreshDemoState extends State<RefreshDemo> {
       var apiUrl =
           "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=${_page}";
       print("api:${apiUrl}");
-      var response = await Dio().get(apiUrl);
-      print("返回结果:${response}");
-      List tempList = json.decode(response.data)["result"];
+      var result = await Dio().get(apiUrl);
+      print("返回结果:${result}");
+      print("response.data is Map :${result.data is Map}");
+      print("response.data is String :${result.data is String}");
+      List tempList = json.decode(result.data)["result"];
       if (tempList.length < this._pageSize) {
         setState(() {
           this._list.addAll(tempList);
@@ -94,15 +98,26 @@ class _RefreshDemoState extends State<RefreshDemo> {
                 controller: _scrollController,
                 itemCount: this._list.length, //20
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                        title:
-                            Text("${this._list[index]["title"]}", maxLines: 1),
-                      ),
-                      Divider(height: 1,color: Colors.black26,),
-                      _showMore(index)
-                    ],
+                  return InkWell(
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          title:
+                          Text("${this._list[index]["title"]}", maxLines: 1),
+                        ),
+                        Divider(height: 1,color: Colors.black26,),
+                        _showMore(index)
+                      ],
+                    ),
+                    onTap: (){
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                         if(index % 2==0){
+                           return NewsDetailPage1(aid:_list[index]['aid']);
+                         }else{
+                           return NewsDetailPage2(aid:_list[index]['aid']);
+                         }
+                       }));
+                    },
                   );
                 },
               ))
