@@ -7,6 +7,7 @@ import 'package:untitled/widget/http/dio_demo.dart';
 import 'package:untitled/widget/http/http_demo.dart';
 import 'package:untitled/widget/http/http_request_demo.dart';
 import 'package:untitled/widget/pages/form_page.dart';
+import 'package:untitled/widget/picker/image_picker_page.dart';
 import 'package:untitled/widget/refresh/refresh_demo.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -101,6 +102,14 @@ class _CategoryPageState extends State<CategoryPage> {
                 }));
               },
               child: Text("Refresh下拉刷新")
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  return ImagePickerPage();
+                }));
+              },
+              child: Text("相机拍照")
           )
         ],
       ),

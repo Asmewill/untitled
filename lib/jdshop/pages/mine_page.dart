@@ -5,6 +5,7 @@ import 'package:untitled/jdshop/pages/order_page.dart';
 import 'package:untitled/jdshop/utils/ToastUtil.dart';
 import 'package:untitled/jdshop/utils/user_util.dart';
 import 'package:untitled/jdshop/widget/jd_button.dart';
+import 'package:untitled/widget/statefulwidget/scaffold_bottom_navigation_bar_1.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({Key? key}) : super(key: key);
@@ -157,13 +158,16 @@ class _MinePageState extends State<MinePage> {
                       children: [
                         Icon(Icons.local_car_wash, color: Colors.red),
                         SizedBox(width: 30),
-                        Text("待收货",
+                        Text("FlutterDemo",
                             style: TextStyle(fontSize: 18, color: Colors.black))
                       ],
                     ),
                   ),
                   onTap: () {
-                    ToastUtil.showMsg("待收货");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return ScaffoldBottomNavigationBar1();
+                        }));
                   },
                 ),
                 Divider(height: 0.5, color: Colors.black26),
