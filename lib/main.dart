@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/jdshop/provider/cart_provider.dart';
-import 'package:untitled/jdshop/provider/checkout_provider.dart';
 import 'package:untitled/jdshop/routes/routes.dart';
 import 'package:untitled/widget/provider/count_provider.dart';
+
+import 'jdshop/provider/cart_provider.dart';
+import 'jdshop/provider/checkout_provider.dart';
 
 
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         //designSize: Size(750, 1334),
-        builder: () {
+        builder: (context,child) {
       return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => CountProvider()),
@@ -41,11 +42,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-//
-// class HomeContent extends StatelessWidget {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return AddNumByElevatedButton();
-//   }
-// }

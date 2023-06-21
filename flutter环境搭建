@@ -1,4 +1,4 @@
-1.Flutter中文网环境搭建教程：https://flutterchina.club/setup-windows/#%E4%BD%BF%E7%94%A8%E9%95%9C%E5%83%8F
+1.Flutter中文网环境搭建教程：https://flutter.cn/docs/get-started/install/windows
 
 2.环境变量配置：https://www.jianshu.com/p/ec829849c071
 
@@ -20,7 +20,6 @@ https://blog.csdn.net/tangxw1991/article/details/79773191
 
 7.flutter 内置图标库：http://bbs.itying.com/topic/5d22b111fb714f06a4b0188d
 
-
 8.flutter国内库镜像地址：https://pub.flutter-io.cn/packages?q=flutter_swiper_null_safety
 
 9.国外flutter开源项目网址：https://itsallwidgets.com/
@@ -28,7 +27,6 @@ https://blog.csdn.net/tangxw1991/article/details/79773191
 10.学习资料：https://longyi.blog.csdn.net/article/details/107045022
 
 11.如果插件不支持空安全，可以使用：flutter run --no-sound-null-safety
-
 
 12.
 水坚 8-27 15:12:41
@@ -54,5 +52,9 @@ ListView中直接放Container时必须给出高度才会显示
 
 13.Flutter混合开发 如何将Flutter项目变成Module导入Android项目(4.6)
 https://blog.csdn.net/weixin_44819566/article/details/110238546
+
+14.创建一个stateless widget 或 stateful widget
+*只需输入stless即可创建一个无状态widget
+*或输入stful 创建一个 Stateful widget
 
 

@@ -1,5 +1,5 @@
 
-import 'package:city_pickers/city_pickers.dart';
+//import 'package:city_pickers/city_pickers.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/jdshop/configs/config.dart';
@@ -88,16 +88,16 @@ class _AddressEditState extends State<AddressEditPage> {
             ),
             onTap: () async{
               //最新版本的Flutter注意返回的类型  需要判断是否为空
-              Result? result = await CityPickers.showCityPicker(
-                  context: context,
-                  cancelWidget:
-                  Text("取消", style: TextStyle(color: Colors.blue)),
-                  confirmWidget:
-                  Text("确定", style: TextStyle(color: Colors.blue)));
-              print(result);
-              setState(() {
-                this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
-              });
+              // Result? result = await CityPickers.showCityPicker(
+              //     context: context,
+              //     cancelWidget:
+              //     Text("取消", style: TextStyle(color: Colors.blue)),
+              //     confirmWidget:
+              //     Text("确定", style: TextStyle(color: Colors.blue)));
+              // print(result);
+              // setState(() {
+              //   this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
+              // });
             },
           ),
           TextField(

@@ -64,7 +64,7 @@ class _AddressAddState extends State<AddressAddPage> {
               ),
             ),
             onTap: () async{
-              //最新版本的Flutter注意返回的类型  需要判断是否为空
+             // 最新版本的Flutter注意返回的类型  需要判断是否为空
               Result? result = await CityPickers.showCityPicker(
                   context: context,
                   cancelWidget:
@@ -76,7 +76,8 @@ class _AddressAddState extends State<AddressAddPage> {
                  this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
                });
             },
-          ),
+          )
+          ,
           TextField(
             maxLines: 3,
             decoration: InputDecoration(
