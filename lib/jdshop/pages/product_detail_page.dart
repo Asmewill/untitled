@@ -82,8 +82,15 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         showMenu(
                             context: context,
                             position: RelativeRect.fromLTRB(
-                                ScreenUtil().screenWidth - 100, 80, 0, 0),
+                                ScreenUtil().screenWidth - 100, 90, 0, 0),
                             items: [
+                              // Container(
+                              //   child: Column(
+                              //     children: [
+                              //
+                              //     ],
+                              //   ),
+                              // )
                               PopupMenuItem(
                                   child: Row(
                                     children: [Icon(Icons.home), Text("首页")],

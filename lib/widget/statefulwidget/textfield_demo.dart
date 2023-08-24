@@ -8,22 +8,38 @@ class TextFiledDemo extends StatefulWidget {
 }
 
 class _TextFiledState extends State<TextFiledDemo> {
-   var _usernameController=TextEditingController();
-   var _password;
+ var _usernameController ;
+  var _password;
+
+   TextEditingController inputTextCollection(String value) {
+    TextEditingController tempController = TextEditingController();
+   //解决设置了初始值之后，
+    tempController.addListener(() {
+      final text =tempController.text;
+      tempController.value = tempController.value.copyWith(
+        text: text,
+        selection: TextSelection(baseOffset: text.length, extentOffset: text.length),
+        composing: TextRange.empty,
+      );
+    });
+    tempController.text = value;
+    return tempController;
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _usernameController.text="初始值";
+    _usernameController=inputTextCollection("初始值");
+    //_usernameController.text = "初始值";
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _usernameController.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +57,8 @@ class _TextFiledState extends State<TextFiledDemo> {
                 onChanged: (value) {
                   print(value);
                   setState(() {
-                    _usernameController.text=value;
+                    _usernameController.text = value;
+
                   });
                 },
               ),
@@ -51,7 +68,7 @@ class _TextFiledState extends State<TextFiledDemo> {
                 onChanged: (value) {
                   print(value);
                   setState(() {
-                    this._password=value;
+                    this._password = value;
                   });
                 },
               ),
@@ -63,11 +80,10 @@ class _TextFiledState extends State<TextFiledDemo> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        print("用户名："+_usernameController.text);
-                        print("密码："+_password);
+                        print("用户名：" + _usernameController.text);
+                        print("密码：" + _password);
                       },
                       child: Text("登录"),
-
                     ),
                   ))
                 ],
@@ -77,5 +93,3 @@ class _TextFiledState extends State<TextFiledDemo> {
         ));
   }
 }
-
-

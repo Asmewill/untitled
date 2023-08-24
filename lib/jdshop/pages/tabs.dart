@@ -3,7 +3,8 @@ import 'package:untitled/jdshop/pages/cart_page.dart';
 import 'package:untitled/jdshop/pages/category_page.dart';
 import 'package:untitled/jdshop/pages/home_page.dart';
 import 'package:untitled/jdshop/pages/mine_page.dart';
-import 'package:untitled/jdshop/pages/search_page.dart';
+
+
 
 class Tabs extends StatefulWidget {
   const Tabs({Key? key}) : super(key: key);
@@ -55,8 +56,6 @@ class _TabsState extends State<Tabs> {
         },
         type: BottomNavigationBarType.fixed,
       ),
-
-
     );
   }
 }

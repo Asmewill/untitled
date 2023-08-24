@@ -38,7 +38,7 @@ class _CategoryState extends State<CategoryPage>
   void _getLeftData() async {
     var api = "${Config.domain}api/pcate";
     var result = await Dio().get(api);
-    print("${result.data}");
+    print("${result}");
     var leftModel = LeftModel.fromJson(result.data);
     setState(() {
       this._leftList = leftModel.result;
@@ -49,7 +49,7 @@ class _CategoryState extends State<CategoryPage>
   void _getRightData(var pid) async {
     var api = "${Config.domain}api/pcate?pid=${pid}";
     var result = await Dio().get(api);
-    print("${result.data}");
+    print("${result}");
     var rightModel = RightModel.fromJson(result.data);
     setState(() {
       this._rightList = rightModel.result;

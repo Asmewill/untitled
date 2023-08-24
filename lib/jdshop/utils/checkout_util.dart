@@ -4,7 +4,7 @@ import 'package:untitled/jdshop/utils/sharedpreferences_util.dart';
 
 class CheckoutUtil {
   //计算总价
-  static getAllPrice(checkOutListData) {
+  static getAllPrice(List checkOutListData) {
     var tempAllPrice = 0.0;
     for (var i = 0; i < checkOutListData.length; i++) {
       if (checkOutListData[i]["checked"] == true) {

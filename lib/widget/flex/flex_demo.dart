@@ -40,7 +40,7 @@ class _FlexDemoState extends State<FlexDemo> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 30.0),
             child: SizedBox(
               height: 100.0,
               // Flex的三个子widget，在垂直方向按2:1:1来占用100像素的空间
@@ -48,23 +48,20 @@ class _FlexDemoState extends State<FlexDemo> {
                 direction: Axis.vertical,
                 children: <Widget>[
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Container(
-                      height: 30.0,
                       color: Colors.red,
                     ),
                   ),
                   Expanded(
                     flex: 2,
                     child: Container(
-                      height: 30.0,
-                      color: Colors.red,
+                      color: Colors.blue,
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 30.0,
                       color: Colors.green,
                     ),
                   )
@@ -73,7 +70,6 @@ class _FlexDemoState extends State<FlexDemo> {
               ),
             ),
           )
-
         ],
       ),
     );

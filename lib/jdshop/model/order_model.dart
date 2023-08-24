@@ -18,7 +18,7 @@ class OrderModel {
     if (json['result'] != null) {
       result = [];
       json['result'].forEach((v) {
-        result?.add(OrderItem.fromJson(v));
+        result.add(OrderItem.fromJson(v));
       });
     }
   }
@@ -28,7 +28,7 @@ class OrderModel {
     map['success'] = success;
     map['message'] = message;
     if (result != null) {
-      map['result'] = result?.map((v) => v.toJson()).toList();
+      map['result'] = result.map((v) => v.toJson()).toList();
     }
     return map;
   }

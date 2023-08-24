@@ -26,7 +26,7 @@ class CartProvider with ChangeNotifier{
   double get allPrice => this._allPrice;
 
   CartProvider() {
-    this.init();
+    this.init();//初始化的的时候，直接初始化购物车数据
   }
   //初始化的时候获取购物车数据
   init() async {

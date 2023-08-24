@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled/jdshop/configs/config.dart';
 import 'package:untitled/jdshop/event/event_bus.dart';
 import 'package:untitled/jdshop/pages/register_one_page.dart';
@@ -102,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  doLogin()async {
+  doLogin() async {
     if (userName.length == 0) {
       ToastUtil.showMsg("用户名不能为空");
       return;

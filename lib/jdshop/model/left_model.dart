@@ -10,7 +10,7 @@ class LeftModel {
     if (json['result'] != null) {
       result = [];
       json['result'].forEach((v) {
-        result?.add(LeftItemModel.fromJson(v));
+        result.add(LeftItemModel.fromJson(v));
       });
     }
   }
@@ -18,7 +18,7 @@ class LeftModel {
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     if (result != null) {
-      map['result'] = result?.map((v) => v.toJson()).toList();
+      map['result'] = result.map((v) => v.toJson()).toList();
     }
     return map;
   }

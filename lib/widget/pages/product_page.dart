@@ -18,7 +18,7 @@ class _ProductPageState extends State<ProductPage> {
       body:  Center(
         child: ElevatedButton(
           onPressed: (){
-            Navigator.pushNamed(context, "/product_info",arguments: {"id":"888"});
+               Navigator.pushNamed(context, "/product_info",arguments: {"id":"888"});
           },
           child: Text("这是一个商品页面,点击跳转到商品详情"),
         ),

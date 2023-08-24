@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         //designSize: Size(750, 1334),
-        builder: (context,child) {
+        builder: () {
       return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => CountProvider()),
@@ -26,7 +27,6 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: true,
           title: "FirstFlutter",
-
           ///默认不配置抽取路由
           // home: ScaffoldBottomNavigationBar1(),
           // routes: {

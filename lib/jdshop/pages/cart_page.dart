@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/jdshop/model/ProductModel.dart';
-import 'package:untitled/jdshop/model/product_detail_model.dart';
 import 'package:untitled/jdshop/pages/checkout_page.dart';
 import 'package:untitled/jdshop/pages/login_page.dart';
 import 'package:untitled/jdshop/pages/product_detail_page.dart';
@@ -13,9 +10,7 @@ import 'package:untitled/jdshop/utils/ToastUtil.dart';
 import 'package:untitled/jdshop/utils/cart_util.dart';
 import 'package:untitled/jdshop/utils/image_util.dart';
 import 'package:untitled/jdshop/utils/user_util.dart';
-import 'package:untitled/jdshop/widget/cart_num.dart';
 import 'package:untitled/jdshop/widget/cart_num_2.dart';
-import 'package:untitled/widget/pages/product_info_page.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -144,6 +139,7 @@ class _CarPageState extends State<CartPage> {
             ],
           ),
           Positioned(
+              //这个其实是悬浮在ListView之上
               bottom: 0,
               child: Container(
                 height: 50,

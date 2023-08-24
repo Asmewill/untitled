@@ -45,10 +45,7 @@ class CartUtil {
                   }
 
                 ];
-
-
       */
-
     //注意：新版shared_preferences增加了可空类型，如果为空不会报错了，所以这里直接可以判断。
 
     String? cartList = await SharedPreferencesUtils.getString('cartList');

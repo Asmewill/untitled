@@ -89,7 +89,7 @@ class ProductDetailItemModel {
     if (json['attr'] != null) {
       attr = [];
       json['attr'].forEach((v) {
-        attr?.add(Attr.fromJson(v));
+        attr.add(Attr.fromJson(v));
       });
     }
     subTitle = json['sub_title'];
@@ -113,7 +113,7 @@ class ProductDetailItemModel {
     map['content'] = content;
     map['cname'] = cname;
     if (attr != null) {
-      map['attr'] = attr?.map((v) => v.toJson()).toList();
+      map['attr'] = attr.map((v) => v.toJson()).toList();
     }
     map['sub_title'] = subTitle;
     map['salecount'] = salecount;

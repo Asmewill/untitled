@@ -70,7 +70,7 @@ class _DialogDemoState extends State<DialogDemo> {
                           );
                         });
                   },
-                  child: Text("自定义LoadingDialog")),
+                  child: Text("自定义Dialog")),
             ],
           )
         ],
@@ -117,21 +117,6 @@ class _DialogDemoState extends State<DialogDemo> {
               ),
             ),
             children: [
-              // Text("选择内容"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("选择内容"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("选择内容"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
-              // Text("Text1"),
               Divider(height: 1),
               SimpleDialogOption(
                 child: Text("Option A"),

@@ -9,6 +9,7 @@ import 'package:untitled/jdshop/model/hot_product_model.dart';
 import 'package:untitled/jdshop/model/you_like_model.dart';
 import 'package:untitled/jdshop/pages/product_detail_page.dart';
 import 'package:untitled/jdshop/pages/search_page.dart';
+import 'package:untitled/jdshop/utils/ToastUtil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage>
     var bannerModel = BannerModel.fromJson(result.data);
     //print("result.data:${result.data}");
     setState(() {
-      this._bannerList = bannerModel!.result!;
+      this._bannerList = bannerModel.result;
     });
   }
 
@@ -78,7 +79,9 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.center_focus_weak),
-          onPressed: () {},
+          onPressed: () {
+            ToastUtil.showMsg("item click");
+          },
         ),
         title: InkWell(
           onTap: () {
@@ -97,7 +100,7 @@ class _HomePageState extends State<HomePage>
               children: [
                 Icon(
                   Icons.search,
-                  size: 18,
+                  size: 25,
                   color: Colors.black26,
                 ),
                 Container(
@@ -129,7 +132,9 @@ class _HomePageState extends State<HomePage>
           aspectRatio: 2 / 1,
           child: Swiper(
             itemBuilder: (BuildContext context, int index) {
-              var pic = Config.domain + _bannerList[index].pic;
+              var pic = Config.domain +
+                  _bannerList[index]
+                      .pic; //https://jdmall.itying.com/public/upload/UObZahqPYzFvx_C9CQjU8KiX.png
               var picUrl = pic.replaceAll("\\", "/");
               return new Image.network(
                 "${picUrl}",
@@ -176,37 +181,43 @@ class _HomePageState extends State<HomePage>
                   //图片去除\\转换
                   var pic = Config.domain + _youlikeList[index].pic!;
                   var picUrl = pic.replaceAll("\\", "/");
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return ProductDetailPage(id: _youlikeList[index].id);
-                      }));
-                    },
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 85,
-                          height: 85,
-                          margin: EdgeInsets.only(right: 10), //距离右边的边距
-                          child: AspectRatio(
-                              aspectRatio: 1.0 / 1.0,
-                              child: Image.network(picUrl, fit: BoxFit.cover)),
+                  return Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return ProductDetailPage(
+                                id: _youlikeList[index].id);
+                          }));
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 85,
+                              height: 85,
+                              margin: EdgeInsets.only(right: 0), //距离右边的边距
+                              child: AspectRatio(
+                                  aspectRatio: 1.0 / 1.0,
+                                  child:
+                                  //https://jdmall.itying.com/public/upload/RinsvExKu7Ed-ocs_7W1DxYO.png
+                                      Image.network(picUrl, fit: BoxFit.cover)),
+                            ),
+                            Container(
+                              width: 85,
+                              padding: EdgeInsets.only(top: 5),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "￥${_youlikeList[index].price}",
+                                style:
+                                    TextStyle(fontSize: 12, color: Colors.red),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          width: 85,
-                          padding: EdgeInsets.only(top: 5),
-                          alignment: Alignment.center,
-                          child: Text(
-                            "￥${_youlikeList[index].price}",
-                            style: TextStyle(fontSize: 12, color: Colors.red),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
+                      ));
                 }),
           )
         ],
@@ -261,11 +272,14 @@ class _HomePageState extends State<HomePage>
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 5),
-                              child: Text("￥${item.title}",
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.grey)),
+                              child:Container(
+                                constraints: BoxConstraints(minHeight: 30),//设置最小高度
+                                child:  Text("￥${item.title}",
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 5),

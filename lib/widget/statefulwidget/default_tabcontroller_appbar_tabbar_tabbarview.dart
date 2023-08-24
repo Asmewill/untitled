@@ -38,7 +38,7 @@ class _AppbarDemoState extends State<DefaultTabControllerAppBarTabBarTabBarView>
             ],
             bottom: TabBar(
               isScrollable: true,//设置是否可以滑动
-              unselectedLabelColor: Colors.black,//未选中时文字颜色
+               unselectedLabelColor: Colors.black,//未选中时文字颜色
               labelColor: Colors.red,//文字颜色
               indicatorColor: Colors.red,//底部治时期的颜色
               indicatorSize:TabBarIndicatorSize.label ,//底部指示器宽度大小

@@ -15,6 +15,7 @@ class _OrderPageState extends State<OrderPage>
   @override
   void initState() {
     tabController = TabController(length:5, vsync: this);
+
   }
 
   @override
@@ -28,7 +29,7 @@ class _OrderPageState extends State<OrderPage>
           indicatorColor: Colors.red,
           labelColor: Colors.red,
           unselectedLabelColor: Colors.black,
-          isScrollable: false,
+          isScrollable: true,
           tabs: [
             Tab(child: Text("全部")),
             Tab(child: Text("待付款")),

@@ -10,7 +10,7 @@ class YouLikeModel {
     if (json['result'] != null) {
       result = [];
       json['result'].forEach((v) {
-        result?.add(YouLikeItemModel.fromJson(v));
+        result.add(YouLikeItemModel.fromJson(v));
       });
     }
   }
@@ -18,7 +18,7 @@ class YouLikeModel {
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     if (result != null) {
-      map['result'] = result?.map((v) => v.toJson()).toList();
+      map['result'] = result.map((v) => v.toJson()).toList();
     }
     return map;
   }

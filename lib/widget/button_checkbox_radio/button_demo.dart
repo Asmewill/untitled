@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/jdshop/utils/ToastUtil.dart';
 import 'package:untitled/widget/statefulwidget/custom_button.dart';
 
 class ButtonDemo extends StatelessWidget {
@@ -34,8 +35,9 @@ class ButtonDemo extends StatelessWidget {
                 },
                 child: Text("颜色按钮"),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                    foregroundColor: MaterialStateProperty.all(Colors.black)),
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                  //foregroundColor: MaterialStateProperty.all(Colors.black)
+                ),
               ),
               SizedBox(width: 5),
             ],
@@ -122,7 +124,7 @@ class ButtonDemo extends StatelessWidget {
                   child: Text("圆形按钮"),
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all(
-                          CircleBorder(side: BorderSide(color: Colors.black))),
+                          CircleBorder(side: BorderSide(color: Colors.black))),//CircleBorder
                       backgroundColor: MaterialStateProperty.all(Colors.red),
                       foregroundColor: MaterialStateProperty.all(Colors.black)),
                 ),
@@ -186,7 +188,7 @@ class ButtonDemo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomButton("我是自定义按钮", () {
-                print("我是自定义按钮");
+                  ToastUtil.showMsg("我是自定义按钮");
               }, width: 200, height: 50)
             ],
           )

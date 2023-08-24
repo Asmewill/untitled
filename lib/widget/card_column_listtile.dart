@@ -38,7 +38,6 @@ class CardColumnListTile extends StatelessWidget{
                 ListTile(
                   title: Text("地址:深圳市宝安区福永街道1002号"),
                 )
-
               ],
             ),
           ),

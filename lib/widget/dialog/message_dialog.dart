@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MessageDialog extends Dialog {
-  final title;
-  final message;
-  final negativeText;
-  final positiveText;
+  var title;
+  var message;
+  var negativeText;
+  var positiveText;
   var onCloseEvent;
   var onPositivePressEvent;
 
@@ -21,7 +21,7 @@ class MessageDialog extends Dialog {
   @override
   Widget build(BuildContext context) {
     return new Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(30.0),
       child: new Material(
         type: MaterialType.transparency,
         child: new Column(
@@ -29,31 +29,51 @@ class MessageDialog extends Dialog {
           children: <Widget>[
             new Container(
               decoration: BoxDecoration(
-                color: Color(0xffffffff),
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.all(
-                //     Radius.circular(8.0),
-                //   ),
-                // ),
-                borderRadius: BorderRadius.circular(8)
-              ),
-              margin: const EdgeInsets.all(12.0),
-              child: new Column(
+                  color: Color(0xffffffff),
+                  // shape: RoundedRectangleBorder(
+                  //   borderRadius: BorderRadius.all(
+                  //     Radius.circular(8.0),
+                  //   ),
+                  // ),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Column(
                 children: <Widget>[
-                  new Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: new Stack(
+                  Padding(
+                    padding: EdgeInsets.only(top: 15, bottom: 15),
+                    child: Stack(
                       alignment: AlignmentDirectional.centerEnd,
                       children: [
-                        new Center(
-                          child: new Text(
-                            title,
-                            style: new TextStyle(
-                              fontSize: 19.0,
-                            ),
+                        //  Center(
+                        //   child:  Text(
+                        //     title,
+                        //     style:  TextStyle(
+                        //       fontSize: 19.0,
+                        //     ),
+                        //   ),
+                        // ),
+                        // InkWell(
+                        //   child: Container(
+                        //     padding: EdgeInsets.only(right: 5),
+                        //     child:Icon(Icons.close),
+                        //   ) ,
+                        //   onTap: onCloseEvent,
+                        // )
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 5),
+                            child: IconButton(
+                                onPressed: () {
+                                  onCloseEvent();
+                                }, icon: Icon(Icons.close)),
                           ),
                         ),
-                        IconButton(onPressed:onCloseEvent, icon: Icon(Icons.close)),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text("提示信息",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.black)),
+                        )
                       ],
                     ),
                   ),
@@ -67,7 +87,11 @@ class MessageDialog extends Dialog {
                       padding: const EdgeInsets.all(12.0),
                       child: new IntrinsicHeight(
                         child: new Text(
-                          message,
+                          "在利用eclipse+python+SDK跑android自动化测试脚本时，遇到了该问题，看到一篇博客传送门，总结了该问题的几种情况。"
+                          "在利用eclipse+python+SDK跑android自动化测试脚本时，遇到了该问题，看到一篇博客传送门，总结了该问题的几种情况。"
+                          "在利用eclipse+python+SDK跑android自动化测试脚本时，遇到了该问题，看到一篇博客传送门，总结了该问题的几种情况。"
+                          "在利用eclipse+python+SDK跑android自动化测试脚本时，遇到了该问题，看到一篇博客传送门，总结了该问题的几种情况。"
+                          "在利用eclipse+python+SDK跑android自动化测试脚本时，遇到了该问题，看到一篇博客传送门，总结了该问题的几种情况。",
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ),
@@ -97,32 +121,44 @@ class MessageDialog extends Dialog {
 
   Widget _buildBottomCancelButton() {
     return new Flexible(
-      fit: FlexFit.tight,
-      child: new TextButton(
-        onPressed: onCloseEvent,
-        child: new Text(
-          negativeText,
-          style: TextStyle(
-            fontSize: 16.0,
+        fit: FlexFit.tight,
+        child: Container(
+          height: 48,
+          child: TextButton(
+            onPressed: onCloseEvent,
+            child: new Text(
+              negativeText,
+              style: TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(8))))),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   Widget _buildBottomPositiveButton() {
     return new Flexible(
-      fit: FlexFit.tight,
-      child: new TextButton(
-        onPressed: onPositivePressEvent,
-        child: new Text(
-          positiveText,
-          style: TextStyle(
-            color: Color(Colors.teal.value),
-            fontSize: 16.0,
+        fit: FlexFit.tight,
+        child: Container(
+          height: 48,
+          child: TextButton(
+            onPressed: onPositivePressEvent,
+            child: Text(
+              positiveText,
+              style: TextStyle(
+                color: Color(Colors.teal.value),
+                fontSize: 16.0,
+              ),
+            ),
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.only(bottomRight: Radius.circular(8))))),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

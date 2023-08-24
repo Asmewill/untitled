@@ -45,9 +45,6 @@ class _NewsDetailPageState extends State<NewsDetailPage2> {
                 }
               },
             )),
-            SizedBox(
-              height: 50,
-            )
           ],
         ));
   }

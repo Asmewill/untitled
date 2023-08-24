@@ -47,7 +47,6 @@ class _ProductListPageState extends State<ProductListPage> {
     {"id": 2, "title": "价格", "fileds": 'price', "sort": -1},
     {"id": 3, "title": "筛选"}
   ];
-
   var _selectHeaderId = 0;
   var _searchController=TextEditingController();
 
@@ -99,7 +98,6 @@ class _ProductListPageState extends State<ProductListPage> {
                 hintText: "笔记本",
                 hintStyle: TextStyle(color: Colors.black26,fontSize: 16),
                 contentPadding: EdgeInsets.only(left: 20),
-
                 border: OutlineInputBorder(
                   //borderRadius: BorderRadius.circular(30),
                     borderSide: BorderSide.none),
@@ -116,17 +114,12 @@ class _ProductListPageState extends State<ProductListPage> {
               margin: EdgeInsets.only(right: 10),
               child: TextButton(
                 onPressed: () {
-                 // print("aaaaaaa");
                   _filterListData(0);
                 },
                 child: Text("搜索", style: TextStyle(color: Colors.black)),
               ),
             )
           ]
-
-
-
-
       ),
       body: Stack(
         children: [_productListWidget(), _filterWidget()],
@@ -154,7 +147,7 @@ class _ProductListPageState extends State<ProductListPage> {
 
     print('Api:${api}');
     var result = await new Dio().get(api);
-    print('返回结果:${result.data}');
+    print('返回结果:${result}');
     var productList = ProductListModel.fromJson(result.data);
     // setState(() {
     //   this._productList = productList.result;

@@ -1,3 +1,4 @@
+//import 'package:city_pickers/city_pickers.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -75,6 +76,9 @@ class _AddressAddState extends State<AddressAddPage> {
                setState(() {
                  this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
                });
+             // setState(() {
+             //     this.area="湖北省/孝感市/云梦县";
+             //   });
             },
           )
           ,

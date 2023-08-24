@@ -64,7 +64,7 @@ class _RegisterPageState extends State<RegisterTwoPage> {
         children: [
           SizedBox(height: 20),
           Padding(
-              padding: EdgeInsets.only(left: 12),
+              padding: EdgeInsets.only(left: 12,bottom: 10),
               child: Text(
                 "请输入${widget.tel}收到的手机验证码",
                 style: TextStyle(color: Colors.black),
@@ -83,7 +83,7 @@ class _RegisterPageState extends State<RegisterTwoPage> {
                   right: 0,
                   child: Container(
                     width: ScreenUtil().screenWidth / 3 - 20,
-                    alignment: Alignment.center,
+                   // alignment: Alignment.center,
                     child: JdButton(
                       height: 40,
                       text:this.isEnable? "重新发送":"${this.second}s后重发",
@@ -110,6 +110,7 @@ class _RegisterPageState extends State<RegisterTwoPage> {
      print("api:${api}");
      var result = await Dio().post(api, data: {"tel": widget.tel});
      print("返回结果:${result}");
+     ToastUtil.showMsg("验证码:${result}");
      if(result.data["success"]==true){
        ToastUtil.showMsg(result.data['message']);
        setState(() {
@@ -123,7 +124,7 @@ class _RegisterPageState extends State<RegisterTwoPage> {
 
    }
 
-  validateCode()async{
+  validateCode() async{
     if(vCode.length==0){
       ToastUtil.showMsg("请输入验证码");
     }else{

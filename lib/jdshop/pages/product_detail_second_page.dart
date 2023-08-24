@@ -35,8 +35,9 @@ class _ProductDetailSecondPageState extends State<ProductDetailSecondPage> with 
               child: InAppWebView(
             //老版本：initialUrl    新版本：initialUrlRequest
             initialUrlRequest: URLRequest(
-                url:
-                    Uri.parse("https://jd.itying.com/pcontent?id=${this._id}")),
+             //   url: Uri.parse("https://jd.itying.com/pcontent?id=${this._id}")
+                url: Uri.parse("https://juejin.cn/")
+            ),
             onProgressChanged:
                 (InAppWebViewController controller, int progress) {
               print(progress / 100);

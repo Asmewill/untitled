@@ -58,7 +58,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
     print("ProductDetailFirstPage---deactivate");
   }
 
-  var actionEventBus;
+
 
   ///当 State 对象从树中被永久移除时调用。通常在此回调中释放资源。
   @override
@@ -68,7 +68,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
     print("ProductDetailFirstPage---dispose");
     actionEventBus.cancel();
   }
-
+  var actionEventBus;
   @override
   void initState() {
     // TODO: implement initState
@@ -290,7 +290,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
                         child: Wrap(
                           spacing: 10,
                           runSpacing: 10,
-                          children: _attr[index].attrList!.map((item) {
+                          children: _attr[index].attrList.map((item) {
                             return InkWell(
                               onTap: () {
                                 _changeAttr(
@@ -306,6 +306,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
                                     Text(item['title'],
                                         style: TextStyle(
                                             color: item['checked']
+
                                                 ? Colors.white
                                                 : Colors.black,
                                             fontSize: 14))
@@ -349,7 +350,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
                           child: Wrap(
                             spacing: 10,
                             runSpacing: 10,
-                            children: itemParent.attrList!.map((item) {
+                            children: itemParent.attrList.map((item) {
                               return InkWell(
                                 onTap: () {
                                   _changeAttr(
@@ -429,7 +430,6 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
                                   Navigator.pop(context);
                                   cartProvider.updateCartList();
                                   ToastUtil.showMsg("加入购物车成功");
-
                                 },
                                 style: ButtonStyle(
                                   shape: MaterialStateProperty.all(
@@ -478,7 +478,7 @@ class _ProductDetailFirstPageState extends State<ProductDetailFirstPage>
   _changeAttr(
       Attr attrItem, String cate, Map currentItem, dynamic setBottomState) {
     setBottomState(() {
-      for (var i = 0; i < attrItem.attrList!.length; i++) {
+      for (var i = 0; i < attrItem.attrList.length; i++) {
         if (currentItem['title'].toString() ==
                 attrItem.attrList[i]["title"].toString() &&
             (cate == attrItem.cate)) {

@@ -57,4 +57,13 @@ https://blog.csdn.net/weixin_44819566/article/details/110238546
 *只需输入stless即可创建一个无状态widget
 *或输入stful 创建一个 Stateful widget
 
+15.2023-06-25
+flutter --version  3.10.5
+Dart version  3.0.5
+
+
+16.Jdshop商城注册用户账号：
+18279259496   aeuio888
+
+17.你把这个 ^ 符号去掉 就是加载指定 的版本的 ， ^ 会在每次加载依赖时自动向上拉取最新版本
 

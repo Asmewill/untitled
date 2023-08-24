@@ -50,14 +50,12 @@ class _HomePageState extends State<HomePage> {
         ),
         ElevatedButton(
             onPressed: () {
-              ///命名路由跳转
               Navigator.pushNamed(context, '/default_tabcontrol_appbar_tabbar_tabbarview');
             },
             child: Text("DefaultTabControllerAppBarTabBarTabBarView")
         ),
         ElevatedButton(
             onPressed: () {
-              ///命名路由跳转
               Navigator.pushNamed(context, '/tabcontrol_appbar_tabbar_tabbarview');
             },
             child: Text("TabControllerAppBarTabBarTabBarView")

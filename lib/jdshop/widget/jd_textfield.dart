@@ -6,36 +6,33 @@ class JdTextField extends StatelessWidget {
   final bool password;
   var onChanged;
   var controller;
-
   JdTextField(
       {Key? key,
       this.text = "输入内容",
       this.controller,
       this.password = false,
-      this.onChanged })
+      this.onChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 40,
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(width: 1, color: Colors.black12))),
       child: TextField(
-     //   textAlign: TextAlign.end,
         controller: controller,
         textAlignVertical: TextAlignVertical.bottom,
         maxLines: 1,
         obscureText: this.password,
-      //  autofocus: true,
+        //  autofocus: true,
         decoration: InputDecoration(
             hintText: this.text,
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide.none
-            )),
+                borderSide: BorderSide.none)),
         onChanged: this.onChanged,
       ),
-      height: 40,
-      decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 1, color: Colors.black12))),
     );
   }
 }

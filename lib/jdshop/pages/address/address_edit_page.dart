@@ -1,5 +1,6 @@
 
 //import 'package:city_pickers/city_pickers.dart';
+import 'package:city_pickers/city_pickers.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/jdshop/configs/config.dart';
@@ -49,7 +50,7 @@ class _AddressEditState extends State<AddressEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("增加收货地址"),
+        title: Text("编辑收货地址"),
       ),
       body: ListView(
         children: [
@@ -87,17 +88,17 @@ class _AddressEditState extends State<AddressEditPage> {
               ),
             ),
             onTap: () async{
-              //最新版本的Flutter注意返回的类型  需要判断是否为空
-              // Result? result = await CityPickers.showCityPicker(
-              //     context: context,
-              //     cancelWidget:
-              //     Text("取消", style: TextStyle(color: Colors.blue)),
-              //     confirmWidget:
-              //     Text("确定", style: TextStyle(color: Colors.blue)));
-              // print(result);
-              // setState(() {
-              //   this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
-              // });
+             // 最新版本的Flutter注意返回的类型  需要判断是否为空
+              Result? result = await CityPickers.showCityPicker(
+                  context: context,
+                  cancelWidget:
+                  Text("取消", style: TextStyle(color: Colors.blue)),
+                  confirmWidget:
+                  Text("确定", style: TextStyle(color: Colors.blue)));
+              print(result);
+              setState(() {
+                this.area="${result!.provinceName}/${result!.cityName}/${result!.areaName}";
+              });
             },
           ),
           TextField(
@@ -120,7 +121,6 @@ class _AddressEditState extends State<AddressEditPage> {
                 text: "修改",
                 height: 48,
                 pressed: doEditAddress,
-
               )),
           SizedBox(height: 50),
         ],
@@ -169,7 +169,7 @@ class _AddressEditState extends State<AddressEditPage> {
       "sign":sign
     });
     print("返回结果:${result}");
-    if(result.data['success'] ){
+    if(result.data['success']){
       ToastUtil.showMsg(result.data['message']);
       eventBus.fire(AddressEvent(text: "修改地址"));
       Navigator.pop(context);
