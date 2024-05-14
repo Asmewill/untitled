@@ -1,16 +1,18 @@
 # untitled
 
-A new Flutter project.
+### Support Version
+Flutter SDK Version: Flutter (Channel stable, 2.2.3, on Microsoft Windows [Version 10.0.19045.4291], locale zh-CN)
+AndroidStudio Version: Android Studio Giraffe | 2022.3.1 Patch 1
+Gradle Version:gradle-6.1.1-all.zip  
+ClassPath :com.android.tools.build:gradle:4.0.2
+备注：如果Gradle版本本地没有的话，run项目会一直卡住，无法安装，时间非常久...
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Test Account
+userName：13148735190   
+PWD:aeuio888
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+###  Flutter第三库
+https://pub-web.flutter-io.cn/
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
